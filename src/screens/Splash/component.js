@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { connect } from 'react-redux'
+import { getSleepData } from '../../modules/sleepData'
+
 const Wrapper = styled.View`
   flex: 1;
   justify-content: center;
@@ -11,10 +14,22 @@ const SplashText = styled.Text`
   font-size: 15;
 `
 
-const SplashComponent = () => (
-  <Wrapper>
-    <SplashText>Splash Screen</SplashText>
-  </Wrapper>
+@connect(
+  state => ({
+    user1: state
+  }),
+  { getSleepData }
 )
+export default class SplashComponent extends React.Component {
+  componentDidMount() {
+    this.props.getSleepData()
+  }
 
-export default SplashComponent
+  render() {
+    return (
+      <Wrapper>
+        <SplashText> Splash</SplashText>
+      </Wrapper>
+    )
+  }
+}
