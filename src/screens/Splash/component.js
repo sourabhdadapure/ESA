@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { connect } from 'react-redux'
 import { getSleepData } from '../../modules/sleepData'
-import { Swipeable } from '../../components'
+import { BarGraph, SplineGraph, Swipeable } from '../../components'
 
 const Wrapper = styled.View`
   flex: 1;
@@ -17,7 +17,9 @@ const SplashText = styled.Text`
 
 @connect(
   state => ({
-    user1: state
+    user1: state.sleepData.user1,
+    user2: state.sleepData.user2,
+    user3: state.sleepData.user3
   }),
   { getSleepData }
 )

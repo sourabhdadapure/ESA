@@ -1,46 +1,36 @@
 import React from 'react'
 import styled from 'styled-components'
 import Swiper from 'react-native-swiper'
+import BarGraph from './BarGraph'
+import SplineGraph from './SplineGraph'
 
-const Swipe1 = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: #9dd6eb;
-`
-
-const Swipe2 = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: #97cae5;
-`
-
-const Swipe3 = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: #92bbd9;
-`
+const Wrapper = styled.View``
 
 const TextWrapper = styled.Text`
-  font-size: 25;
-  color: white;
+  font-size: 20;
+  color: red;
+  text-align: center;
 `
 
 export default class Swipeable extends React.Component {
   render() {
     return (
-      <Swiper showsButtons={true}>
-        <Swipe1>
-          <TextWrapper> SLIDE 1</TextWrapper>
-        </Swipe1>
-        <Swipe2>
-          <TextWrapper> SLIDE 2</TextWrapper>
-        </Swipe2>
-        <Swipe3>
-          <TextWrapper> SLIDE 3</TextWrapper>
-        </Swipe3>
+      <Swiper>
+        <Wrapper>
+          <BarGraph />
+        </Wrapper>
+        <Wrapper>
+          <TextWrapper>Room and Bed Temparatures</TextWrapper>
+          <SplineGraph title="Interval 1" />
+          <SplineGraph title="Interval 2" />
+          <SplineGraph title="Interval 3" />
+        </Wrapper>
+        <Wrapper>
+          <TextWrapper>Heart and Respiratory Rates</TextWrapper>
+          <SplineGraph title="Interval 1" />
+          <SplineGraph title="Interval 2" />
+          <SplineGraph title="Interval 3" />
+        </Wrapper>
       </Swiper>
     )
   }
