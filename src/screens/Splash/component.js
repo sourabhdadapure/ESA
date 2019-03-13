@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { connect } from 'react-redux'
 import { getSleepData } from '../../modules/sleepData'
+import { Swipeable } from '../../components'
 
 const Wrapper = styled.View`
   flex: 1;
@@ -28,7 +29,7 @@ export default class SplashComponent extends React.Component {
   render() {
     return (
       <Wrapper>
-        <SplashText> Splash</SplashText>
+        <Swipeable />
       </Wrapper>
     )
   }
