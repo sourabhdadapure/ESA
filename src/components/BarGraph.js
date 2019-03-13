@@ -9,7 +9,7 @@ export default class BarGraph extends React.Component {
   static propTypes = {
     awakeData: PropTypes.array.isRequired,
     deepData: PropTypes.array.isRequired,
-    lighData: PropTypes.array.isRequired,
+    lightData: PropTypes.array.isRequired,
     outData: PropTypes.array.isRequired
   }
 
@@ -61,7 +61,7 @@ export default class BarGraph extends React.Component {
         },
         {
           name: 'Light',
-          data: this.props.lighData
+          data: this.props.lightData
         },
         {
           name: 'Out',
