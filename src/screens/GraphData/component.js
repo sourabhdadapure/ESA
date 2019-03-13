@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { BarGraph, SplineGraph, Swipeable } from '../../components'
+import { Swipeable } from '../../components'
 
 const Wrapper = styled.View`
   flex: 1;
@@ -13,7 +13,7 @@ const SplashText = styled.Text`
   font-size: 15;
 `
 
-export default class GraphComponent extends React.Component {
+export default class GraphDataComponent extends React.Component {
   render() {
     return (
       <Wrapper>

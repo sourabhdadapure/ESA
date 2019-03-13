@@ -1,5 +1,6 @@
 import types from './types'
 import constants from '../../utility/constants'
+import { buildAxes } from '../../utility'
 import axios from 'axios'
 
 //refactor later
@@ -21,15 +22,6 @@ function buildMap(arr) {
   }
 
   return stagesArr
-}
-
-function buildAxes(arr) {
-  const arrData = { xAxis: [], yAxis: [] }
-  for (let i = 0; i < arr.length; i++) {
-    arrData.xAxis.push(arr[i][0])
-    arrData.yAxis.push(arr[i][1])
-  }
-  return arrData
 }
 
 function buildArray(arr, arrName) {
@@ -67,25 +59,31 @@ export function getSleepData() {
       const user2 = await axios.get(constants.USER2_BASE_URL)
       const user3 = await axios.get(constants.USER3_BASE_URL)
 
+      const heartRate = buildArray(user2.data, 'heartRate')
+
       dispatch({
         payload: {
           user1: {
             heartRate: buildArray(user1.data, 'heartRate'),
             respiratoryRate: buildArray(user1.data, 'respiratoryRate'),
-            roomTemparature: buildArray(user1.data, 'roomTemparature'),
-            bedTemparature: buildArray(user1.data, 'bedTemperature')
+            roomTemperature: buildArray(user1.data, 'roomTemperature'),
+            bedTemperature: buildArray(user1.data, 'bedTemperature')
           },
           user2: {
-            heartRate: buildArray(user2.data, 'heartRate'),
+            heartRate: [
+              buildAxes(heartRate[0]),
+              buildAxes(heartRate[1]),
+              buildAxes(heartRate[2])
+            ],
             respiratoryRate: buildArray(user2.data, 'respiratoryRate'),
-            roomTemparature: buildArray(user2.data, 'roomTemparature'),
-            bedTemparature: buildArray(user2.data, 'bedTemperature')
+            roomTemperature: buildArray(user2.data, 'roomTemperature'),
+            bedTemperature: buildArray(user2.data, 'bedTemperature')
           },
           user3: {
             heartRate: buildArray(user3.data, 'heartRate'),
             respiratoryRate: buildArray(user3.data, 'respiratoryRate'),
-            roomTemparature: buildArray(user3.data, 'roomTemparature'),
-            bedTemparature: buildArray(user3.data, 'bedTemperature')
+            roomTemperature: buildArray(user3.data, 'roomTemperature'),
+            bedTemperature: buildArray(user3.data, 'bedTemperature')
           }
         },
         type: types.GET_SLEEP_DATA_SUCCESS

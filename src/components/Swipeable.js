@@ -27,16 +27,33 @@ const TextWrapper = styled.Text`
   { getSleepData }
 )
 export default class Swipeable extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
-    this.props.getSleepData()
+    const { getSleepData, user1 } = this.props
+    getSleepData()
   }
 
   buildGraphData = arr => {}
 
   render() {
     const { gettingSleepData, user1 } = this.props
-    const axes = buildAxes(user1.heartRate[0])
-    console.log('BUILD AXES', buildAxes(user1.heartRate[0]))
+    const heartRateAxes1 = buildAxes(user1.heartRate[0])
+    const respiratoryAxes1 = buildAxes(user1.respiratoryRate[0])
+    const heartRateAxes2 = buildAxes(user1.heartRate[1])
+    const respiratoryAxes2 = buildAxes(user1.respiratoryRate[1])
+    const heartRateAxes3 = buildAxes(user1.heartRate[2])
+    const respiratoryAxes3 = buildAxes(user1.respiratoryRate[2])
+    //
+    const roomTemperature1 = buildAxes(user1.roomTemperature[0])
+    const bedTemperature1 = buildAxes(user1.bedTemperature[0])
+    const roomTemperature2 = buildAxes(user1.roomTemperature[1])
+    const bedTemperature2 = buildAxes(user1.bedTemperature[1])
+    const roomTemperature3 = buildAxes(user1.roomTemperature[2])
+    const bedTemperature3 = buildAxes(user1.bedTemperature[2])
+
     if (gettingSleepData) {
       return <ActivityIndicator size="large" color="black" />
     }
@@ -89,8 +106,8 @@ export default class Swipeable extends React.Component {
               '09T13',
               '09T14'
             ]}
-            y1Axis={[21.93, 21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
-            y2Axis={[21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
+            y1Axis={roomTemperature1.yAxis}
+            y2Axis={bedTemperature1.yAxis}
           />
           <SplineGraph
             y1Title="Room"
@@ -105,8 +122,8 @@ export default class Swipeable extends React.Component {
               '09T13',
               '09T14'
             ]}
-            y1Axis={[21.93, 21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
-            y2Axis={[21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
+            y1Axis={roomTemperature2.yAxis}
+            y2Axis={bedTemperature2.yAxis}
           />
           <SplineGraph
             y1Title="Room"
@@ -121,8 +138,8 @@ export default class Swipeable extends React.Component {
               '09T13',
               '09T14'
             ]}
-            y1Axis={[21.93, 21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
-            y2Axis={[21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
+            y1Axis={roomTemperature3.yAxis}
+            y2Axis={bedTemperature3.yAxis}
           />
         </Wrapper>
         <Wrapper>
@@ -131,9 +148,9 @@ export default class Swipeable extends React.Component {
             title="Interval 1"
             y1Title="Heart"
             y2Title="Respiratory"
-            xAxis={[]}
-            y1Axis={[21.93, 21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
-            y2Axis={[21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
+            xAxis={heartRateAxes1.xAxis}
+            y1Axis={heartRateAxes1.yAxis}
+            y2Axis={respiratoryAxes1.yAxis}
           />
           <SplineGraph
             title="Interval 2"
@@ -148,8 +165,8 @@ export default class Swipeable extends React.Component {
               '09T13',
               '09T14'
             ]}
-            y1Axis={[21.93, 21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
-            y2Axis={[21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
+            y1Axis={heartRateAxes2.yAxis}
+            y2Axis={respiratoryAxes2.yAxis}
           />
           <SplineGraph
             title="Interval 3"
@@ -164,8 +181,8 @@ export default class Swipeable extends React.Component {
               '09T13',
               '09T14'
             ]}
-            y1Axis={[21.93, 21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
-            y2Axis={[21.53, 21.44, 21.02, 20.24, 20.18, 20.54]}
+            y1Axis={heartRateAxes3.yAxis}
+            y2Axis={respiratoryAxes3.yAxis}
           />
         </Wrapper>
       </Swiper>

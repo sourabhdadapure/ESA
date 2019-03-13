@@ -1,6 +1,14 @@
 import React from 'react'
 import SplashComponent from './component'
 
-const SplashContainer = () => <SplashComponent />
-
-export default SplashContainer
+export default class SplashContainer extends React.Component {
+  render() {
+    return (
+      <SplashComponent
+        onPress={() => {
+          this.props.navigation.navigate('GraphData')
+        }}
+      />
+    )
+  }
+}

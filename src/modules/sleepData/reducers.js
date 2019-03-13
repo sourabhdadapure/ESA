@@ -3,20 +3,20 @@ const initialState = {
   user1: {
     heartRate: [],
     respiratoryRate: [],
-    roomTemparature: [],
-    bedTemparature: []
+    roomTemperature: [],
+    bedTemperature: []
   },
   user2: {
     heartRate: [],
     respiratoryRate: [],
-    roomTemparature: [],
-    bedTemparature: []
+    roomTemperature: [],
+    bedTemperature: []
   },
   user3: {
     heartRate: [],
     respiratoryRate: [],
-    roomTemparature: [],
-    bedTemparature: []
+    roomTemperature: [],
+    bedTemperature: []
   }
 }
 
