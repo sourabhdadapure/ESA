@@ -7,7 +7,12 @@ const Wrapper = styled.View``
 
 export default class SplineGraph extends React.Component {
   static propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    xAxis: PropTypes.array.isRequired,
+    y1Title: PropTypes.string.isRequired,
+    y1Axis: PropTypes.array.isRequired,
+    y2Title: PropTypes.string.isRequired,
+    y2Axis: PropTypes.array.isRequired
   }
 
   render() {
@@ -30,15 +35,7 @@ export default class SplineGraph extends React.Component {
       },
 
       xAxis: {
-        categories: [
-          '09T08',
-          '09T09',
-          '09T10',
-          '09T11',
-          '09T12',
-          '09T13',
-          '09T14'
-        ]
+        categories: this.props.xAxis
       },
       yAxis: {
         title: {
@@ -65,47 +62,33 @@ export default class SplineGraph extends React.Component {
       },
       series: [
         {
-          name: 'Room Temperature',
+          name: this.props.y1Title,
           marker: {
             symbol: 'square'
           },
-          data: [
-            21.93,
-            21.53,
-            21.44,
-            21.02,
-            20.24,
-            20.18,
-            20.54,
-            {
-              y: 26.5,
-              marker: {
-                symbol:
-                  'url(https://www.highcharts.com/samples/graphics/sun.png)'
-              }
-            }
-          ]
+          data: this.props.y1Axis
+
+          // {
+          //   y: 26.5,
+          //   marker: {
+          //     symbol:
+          //       'url(https://www.highcharts.com/samples/graphics/sun.png)'
+          //   }
+          // }
         },
         {
-          name: 'Bed Temparature',
+          name: this.props.y2Title,
           marker: {
             symbol: 'diamond'
           },
-          data: [
-            21.53,
-            21.44,
-            21.02,
-            20.24,
-            20.18,
-            20.54,
-            {
-              y: 21.93,
-              marker: {
-                symbol:
-                  'url(https://www.highcharts.com/samples/graphics/snow.png)'
-              }
-            }
-          ]
+          data: this.props.y2Axis
+          // {
+          //   y: 21.93,
+          //   marker: {
+          //     symbol:
+          //       'url(https://www.highcharts.com/samples/graphics/snow.png)'
+          //   }
+          // }
         }
       ]
     }

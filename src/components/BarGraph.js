@@ -1,10 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import ChartView from 'react-native-highcharts'
 
 const Wrapper = styled.View``
 
 export default class BarGraph extends React.Component {
+  static propTypes = {
+    awakeData: PropTypes.array.isRequired,
+    deepData: PropTypes.array.isRequired,
+    lighData: PropTypes.array.isRequired,
+    outData: PropTypes.array.isRequired
+  }
+
   render() {
     const options = {
       global: {
@@ -45,19 +53,19 @@ export default class BarGraph extends React.Component {
       series: [
         {
           name: 'Awake',
-          data: [4260, 3060, 3600]
+          data: this.props.awakeData
         },
         {
           name: 'Deep',
-          data: [2520, 7440, 6240]
+          data: this.props.deepData
         },
         {
           name: 'Light',
-          data: [15180, 13260, 15600]
+          data: this.props.lighData
         },
         {
           name: 'Out',
-          data: [420, null, 900]
+          data: this.props.outData
         }
       ]
     }
