@@ -1,5 +1,24 @@
 import types from './types'
-const initialState = []
+const initialState = {
+  user1: {
+    heartRate: [],
+    respiratoryRate: [],
+    roomTemparature: [],
+    bedTemparature: []
+  },
+  user2: {
+    heartRate: [],
+    respiratoryRate: [],
+    roomTemparature: [],
+    bedTemparature: []
+  },
+  user3: {
+    heartRate: [],
+    respiratoryRate: [],
+    roomTemparature: [],
+    bedTemparature: []
+  }
+}
 
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -13,18 +32,19 @@ export default function(state = initialState, action) {
     case types.GET_SLEEP_DATA_SUCCESS: {
       return {
         ...state,
-        gettingSleepData: false,
+
         user1: action.payload.user1,
         user2: action.payload.user2,
-        user3: action.payload.user3
+        user3: action.payload.user3,
+        gettingSleepData: false
       }
     }
 
     case types.GET_SLEEP_DATA_SUCCESS: {
       return {
         ...state,
-        gettingSleepData: false,
-        error: action.error
+        error: action.error,
+        gettingSleepData: false
       }
     }
 

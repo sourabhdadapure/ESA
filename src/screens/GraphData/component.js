@@ -13,7 +13,7 @@ const SplashText = styled.Text`
   font-size: 15;
 `
 
-export default class SplashComponent extends React.Component {
+export default class GraphComponent extends React.Component {
   render() {
     return (
       <Wrapper>
