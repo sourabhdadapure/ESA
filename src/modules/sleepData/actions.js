@@ -27,20 +27,7 @@ export function getSleepData() {
       let user1 = await axios.get(constants.USER1_BASE_URL)
       let user2 = await axios.get(constants.USER2_BASE_URL)
       let user3 = await axios.get(constants.USER3_BASE_URL)
-      // const stageMap = {}
-      // const stages = user1.data.intervals[0].stages
-      // console.log('STAGES', stages)
 
-      // for (let char of stages) {
-      //   // stageMap[char.stage] = char.duration
-      //   if (stageMap[char.stage]) {
-      //     stageMap[char.stage] += char.duration
-      //   } else {
-      //     stageMap[char.stage] = char.duration
-      //   }
-      // }
-
-      // console.log('CHAR MAP', stageMap)
       const user1Map = buildMap(user1)
       const user2Map = buildMap(user2)
       const user3Map = buildMap(user3)
