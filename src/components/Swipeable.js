@@ -36,6 +36,12 @@ export default class Swipeable extends React.Component {
     getSleepData()
   }
 
+  // UNSAFE_componentWillUpdate(nextProps, nextState) {
+  //   if (this.props.selectedUser !== nextProps.selectedUser) {
+  //
+  //   }
+  // }
+
   render() {
     const { selectedUser, gettingSleepData } = this.props
 

@@ -14,7 +14,6 @@ export default class SplashContainer extends React.Component {
     return (
       <SplashComponent
         onPress={user => {
-          console.log('SELECTED_USER', user)
           userSelector(user)
           navigation.navigate('GraphData')
         }}
