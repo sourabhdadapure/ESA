@@ -18,7 +18,9 @@ export default class SplashComponent extends React.Component {
     const { onPress } = this.props
     return (
       <Wrapper>
-        <NavButton title="View Sleep Data" onPress={onPress} />
+        <NavButton title="USER 1" onPress={onPress} />
+        <NavButton title="USER 2" onPress={onPress} />
+        <NavButton title="USER 3" onPress={onPress} />
       </Wrapper>
     )
   }
