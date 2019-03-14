@@ -32,27 +32,27 @@ export default class Swipeable extends React.Component {
   }
 
   componentDidMount() {
-    const { getSleepData, user1 } = this.props
+    const { getSleepData } = this.props
     getSleepData()
   }
 
-  buildGraphData = arr => {}
-
   render() {
     const { gettingSleepData, user1 } = this.props
-    const heartRateAxes1 = buildAxes(user1.heartRate[0])
-    const respiratoryAxes1 = buildAxes(user1.respiratoryRate[0])
-    const heartRateAxes2 = buildAxes(user1.heartRate[1])
-    const respiratoryAxes2 = buildAxes(user1.respiratoryRate[1])
-    const heartRateAxes3 = buildAxes(user1.heartRate[2])
-    const respiratoryAxes3 = buildAxes(user1.respiratoryRate[2])
-    //
-    const roomTemperature1 = buildAxes(user1.roomTemperature[0])
-    const bedTemperature1 = buildAxes(user1.bedTemperature[0])
-    const roomTemperature2 = buildAxes(user1.roomTemperature[1])
-    const bedTemperature2 = buildAxes(user1.bedTemperature[1])
-    const roomTemperature3 = buildAxes(user1.roomTemperature[2])
-    const bedTemperature3 = buildAxes(user1.bedTemperature[2])
+
+    const {
+      heartRate,
+      respiratoryRate,
+      bedTemperature,
+      roomTemperature
+    } = user1
+    console.log(
+      'USER1',
+      roomTemperature,
+      heartRate,
+      respiratoryRate,
+      bedTemperature,
+      roomTemperature
+    )
 
     if (gettingSleepData) {
       return <ActivityIndicator size="large" color="black" />
@@ -60,36 +60,7 @@ export default class Swipeable extends React.Component {
     return (
       <Swiper>
         <Wrapper>
-          <BarGraph
-            awakeData={
-              [
-                // sleepStages[0].awake,
-                // sleepStages[1].awake,
-                // sleepStages[2].awake
-              ]
-            }
-            deepData={
-              [
-                // sleepStages[0].deep,
-                // sleepStages[1].deep,
-                // sleepStages[2].deep
-              ]
-            }
-            lightData={
-              [
-                // sleepStages[0].light,
-                // sleepStages[1].light,
-                // sleepStages[2].light
-              ]
-            }
-            outData={
-              [
-                // sleepStages[0].out,
-                // sleepStages[1].out,
-                // sleepStages[2].out
-              ]
-            }
-          />
+          <BarGraph awakeData={[]} deepData={[]} lightData={[]} outData={[]} />
         </Wrapper>
         <Wrapper>
           <TextWrapper>Room and Bed Temparatures</TextWrapper>
@@ -97,49 +68,25 @@ export default class Swipeable extends React.Component {
             y1Title="Room"
             y2Title="Bed"
             title="Interval 1"
-            xAxis={[
-              '09T08',
-              '09T09',
-              '09T10',
-              '09T11',
-              '09T12',
-              '09T13',
-              '09T14'
-            ]}
-            y1Axis={roomTemperature1.yAxis}
-            y2Axis={bedTemperature1.yAxis}
+            xAxis={roomTemperature[0].xAxis}
+            y1Axis={roomTemperature[0].yAxis}
+            y2Axis={bedTemperature[0].yAxis}
           />
           <SplineGraph
             y1Title="Room"
             y2Title="Bed"
             title="Interval 2"
-            xAxis={[
-              '09T08',
-              '09T09',
-              '09T10',
-              '09T11',
-              '09T12',
-              '09T13',
-              '09T14'
-            ]}
-            y1Axis={roomTemperature2.yAxis}
-            y2Axis={bedTemperature2.yAxis}
+            xAxis={roomTemperature[1].xAxis}
+            y1Axis={roomTemperature[1].yAxis}
+            y2Axis={bedTemperature[1].yAxis}
           />
           <SplineGraph
             y1Title="Room"
             y2Title="Bed"
             title="Interval 3"
-            xAxis={[
-              '09T08',
-              '09T09',
-              '09T10',
-              '09T11',
-              '09T12',
-              '09T13',
-              '09T14'
-            ]}
-            y1Axis={roomTemperature3.yAxis}
-            y2Axis={bedTemperature3.yAxis}
+            xAxis={roomTemperature[2].xAxis}
+            y1Axis={roomTemperature[2].yAxis}
+            y2Axis={bedTemperature[2].yAxis}
           />
         </Wrapper>
         <Wrapper>
@@ -148,41 +95,25 @@ export default class Swipeable extends React.Component {
             title="Interval 1"
             y1Title="Heart"
             y2Title="Respiratory"
-            xAxis={heartRateAxes1.xAxis}
-            y1Axis={heartRateAxes1.yAxis}
-            y2Axis={respiratoryAxes1.yAxis}
+            xAxis={heartRate[0].xAxis}
+            y1Axis={heartRate[0].yAxis}
+            y2Axis={respiratoryRate[0].yAxis}
           />
           <SplineGraph
             title="Interval 2"
             y1Title="Heart"
             y2Title="Respiratory"
-            xAxis={[
-              '09T08',
-              '09T09',
-              '09T10',
-              '09T11',
-              '09T12',
-              '09T13',
-              '09T14'
-            ]}
-            y1Axis={heartRateAxes2.yAxis}
-            y2Axis={respiratoryAxes2.yAxis}
+            xAxis={[heartRate[1].xAxis]}
+            y1Axis={heartRate[1].yAxis}
+            y2Axis={heartRate[1].yAxis}
           />
           <SplineGraph
             title="Interval 3"
             y1Title="Heart"
             y2Title="Respiratory"
-            xAxis={[
-              '09T08',
-              '09T09',
-              '09T10',
-              '09T11',
-              '09T12',
-              '09T13',
-              '09T14'
-            ]}
-            y1Axis={heartRateAxes3.yAxis}
-            y2Axis={respiratoryAxes3.yAxis}
+            xAxis={[heartRate[2].xAxis]}
+            y1Axis={heartRate[2].yAxis}
+            y2Axis={respiratoryRate[2].yAxis}
           />
         </Wrapper>
       </Swiper>

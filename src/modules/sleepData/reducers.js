@@ -1,10 +1,26 @@
 import types from './types'
 const initialState = {
   user1: {
-    heartRate: [],
-    respiratoryRate: [],
-    roomTemperature: [],
-    bedTemperature: []
+    heartRate: [
+      { xAxis: [], yAxis: [] },
+      { xAxis: [], yAxis: [] },
+      { xAxis: [], yAxis: [] }
+    ],
+    respiratoryRate: [
+      { xAxis: [], yAxis: [] },
+      { xAxis: [], yAxis: [] },
+      { xAxis: [], yAxis: [] }
+    ],
+    roomTemperature: [
+      { xAxis: [], yAxis: [] },
+      { xAxis: [], yAxis: [] },
+      { xAxis: [], yAxis: [] }
+    ],
+    bedTemperature: [
+      { xAxis: [], yAxis: [] },
+      { xAxis: [], yAxis: [] },
+      { xAxis: [], yAxis: [] }
+    ]
   },
   user2: {
     heartRate: [],

@@ -26,7 +26,7 @@ function buildMap(arr) {
 
 function buildArray(arr, arrName) {
   const arrayData = []
-  const arrayMap = { xAxis: [], yAxis: [] }
+  const arrayMap = []
   for (let i = 0; i < arr.intervals.length; i++) {
     switch (arrName) {
       case 'heartRate':
@@ -45,8 +45,37 @@ function buildArray(arr, arrName) {
         arrayData.push(arr.intervals[i].timeseries.heartRate)
         break
     }
+    arrayMap.push(buildAxes(arrayData[i]))
   }
+  console.log('ARRAY MAP', arrayMap)
   return arrayData
+}
+
+function buildArray1(arr, arrName) {
+  const arrayData = []
+  const arrayMap = []
+  for (let i = 0; i < arr.intervals.length; i++) {
+    switch (arrName) {
+      case 'heartRate':
+        arrayData.push(arr.intervals[i].timeseries.heartRate)
+        break
+      case 'respiratoryRate':
+        arrayData.push(arr.intervals[i].timeseries.respiratoryRate)
+        break
+      case 'roomTemperature':
+        arrayData.push(arr.intervals[i].timeseries.tempRoomC)
+        break
+      case 'bedTemperature':
+        arrayData.push(arr.intervals[i].timeseries.tempBedC)
+        break
+      default:
+        arrayData.push(arr.intervals[i].timeseries.heartRate)
+        break
+    }
+    arrayMap.push(buildAxes(arrayData[i]))
+  }
+
+  return arrayMap
 }
 
 export function getSleepData() {
@@ -59,25 +88,21 @@ export function getSleepData() {
       const user2 = await axios.get(constants.USER2_BASE_URL)
       const user3 = await axios.get(constants.USER3_BASE_URL)
 
-      const heartRate = buildArray(user2.data, 'heartRate')
+      const heartRate = buildArray1(user2.data, 'heartRate')
 
       dispatch({
         payload: {
           user1: {
-            heartRate: buildArray(user1.data, 'heartRate'),
-            respiratoryRate: buildArray(user1.data, 'respiratoryRate'),
-            roomTemperature: buildArray(user1.data, 'roomTemperature'),
-            bedTemperature: buildArray(user1.data, 'bedTemperature')
+            heartRate: buildArray1(user1.data, 'heartRate'),
+            respiratoryRate: buildArray1(user1.data, 'respiratoryRate'),
+            roomTemperature: buildArray1(user1.data, 'roomTemperature'),
+            bedTemperature: buildArray1(user1.data, 'bedTemperature')
           },
           user2: {
-            heartRate: [
-              buildAxes(heartRate[0]),
-              buildAxes(heartRate[1]),
-              buildAxes(heartRate[2])
-            ],
-            respiratoryRate: buildArray(user2.data, 'respiratoryRate'),
-            roomTemperature: buildArray(user2.data, 'roomTemperature'),
-            bedTemperature: buildArray(user2.data, 'bedTemperature')
+            heartRate: buildArray1(user2.data, 'heartRate'),
+            respiratoryRate: buildArray1(user2.data, 'respiratoryRate'),
+            roomTemperature: buildArray1(user2.data, 'roomTemperature'),
+            bedTemperature: buildArray1(user2.data, 'bedTemperature')
           },
           user3: {
             heartRate: buildArray(user3.data, 'heartRate'),
@@ -89,6 +114,7 @@ export function getSleepData() {
         type: types.GET_SLEEP_DATA_SUCCESS
       })
     } catch (error) {
+      console.log('ERRoR', error)
       dispatch({
         type: types.GET_SLEEP_DATA_ERROR,
         error
