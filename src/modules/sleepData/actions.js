@@ -3,7 +3,7 @@ import constants from '../../utility/constants'
 import { buildAxes, buildBarGraphAxes } from '../../utility'
 import axios from 'axios'
 
-//refactor later
+//refactor
 function buildMap(arr) {
   const stagesArr = []
   const stagesObj = {}

@@ -1,27 +1,16 @@
 import types from './types'
 
+const axes = [
+  { xAxis: [], yAxis: [] },
+  { xAxis: [], yAxis: [] },
+  { xAxis: [], yAxis: [] }
+]
 const user = {
   sleepStages: { awake: [], light: [], deep: [], out: [] },
-  heartRate: [
-    { xAxis: [], yAxis: [] },
-    { xAxis: [], yAxis: [] },
-    { xAxis: [], yAxis: [] }
-  ],
-  respiratoryRate: [
-    { xAxis: [], yAxis: [] },
-    { xAxis: [], yAxis: [] },
-    { xAxis: [], yAxis: [] }
-  ],
-  roomTemperature: [
-    { xAxis: [], yAxis: [] },
-    { xAxis: [], yAxis: [] },
-    { xAxis: [], yAxis: [] }
-  ],
-  bedTemperature: [
-    { xAxis: [], yAxis: [] },
-    { xAxis: [], yAxis: [] },
-    { xAxis: [], yAxis: [] }
-  ]
+  heartRate: axes,
+  respiratoryRate: axes,
+  roomTemperature: axes,
+  bedTemperature: axes
 }
 const initialState = {
   user1: user,

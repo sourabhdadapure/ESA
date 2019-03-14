@@ -29,7 +29,7 @@ export default class BarGraph extends React.Component {
         type: 'column'
       },
       title: {
-        text: 'Sleep Intervals'
+        text: 'Sleep Stages'
       },
       xAxis: {
         categories: ['Interval 1', 'Interval 2', 'Interval 3']
@@ -71,7 +71,7 @@ export default class BarGraph extends React.Component {
     }
     return (
       <ChartView
-        style={{ height: 400 }}
+        style={{ height: 400, top: 50 }}
         config={conf}
         options={options}
         originWhitelist={['']}
