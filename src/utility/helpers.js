@@ -11,3 +11,15 @@ export const buildAxes = arr => {
 
   return arrData
 }
+
+export const buildBarGraphAxes = obj => {
+  const objMap = { awake: [], deep: [], light: [], out: [] }
+
+  for (let i = 0; i < obj.length; i++) {
+    objMap.awake.push(obj[i].awake || 0)
+    objMap.deep.push(obj[i].deep || 0)
+    objMap.light.push(obj[i].light || 0)
+    objMap.out.push(obj[i].out || 0)
+  }
+  return objMap
+}

@@ -1,6 +1,6 @@
 import types from './types'
 import constants from '../../utility/constants'
-import { buildAxes } from '../../utility'
+import { buildAxes, buildBarGraphAxes } from '../../utility'
 import axios from 'axios'
 
 //refactor later
@@ -22,33 +22,6 @@ function buildMap(arr) {
   }
 
   return stagesArr
-}
-
-function buildArray(arr, arrName) {
-  const arrayData = []
-  const arrayMap = []
-  for (let i = 0; i < arr.intervals.length; i++) {
-    switch (arrName) {
-      case 'heartRate':
-        arrayData.push(arr.intervals[i].timeseries.heartRate)
-        break
-      case 'respiratoryRate':
-        arrayData.push(arr.intervals[i].timeseries.respiratoryRate)
-        break
-      case 'roomTemperature':
-        arrayData.push(arr.intervals[i].timeseries.tempRoomC)
-        break
-      case 'bedTemperature':
-        arrayData.push(arr.intervals[i].timeseries.tempBedC)
-        break
-      default:
-        arrayData.push(arr.intervals[i].timeseries.heartRate)
-        break
-    }
-    arrayMap.push(buildAxes(arrayData[i]))
-  }
-  console.log('ARRAY MAP', arrayMap)
-  return arrayData
 }
 
 function buildArray1(arr, arrName) {
@@ -88,23 +61,24 @@ export function getSleepData() {
       const user2 = await axios.get(constants.USER2_BASE_URL)
       const user3 = await axios.get(constants.USER3_BASE_URL)
 
-      const heartRate = buildArray1(user2.data, 'heartRate')
-
       dispatch({
         payload: {
           user1: {
+            sleepStages: buildBarGraphAxes(buildMap(user1.data.intervals)),
             heartRate: buildArray1(user1.data, 'heartRate'),
             respiratoryRate: buildArray1(user1.data, 'respiratoryRate'),
             roomTemperature: buildArray1(user1.data, 'roomTemperature'),
             bedTemperature: buildArray1(user1.data, 'bedTemperature')
           },
           user2: {
+            sleepStages: buildBarGraphAxes(buildMap(user2.data.intervals)),
             heartRate: buildArray1(user2.data, 'heartRate'),
             respiratoryRate: buildArray1(user2.data, 'respiratoryRate'),
             roomTemperature: buildArray1(user2.data, 'roomTemperature'),
             bedTemperature: buildArray1(user2.data, 'bedTemperature')
           },
           user3: {
+            sleepStages: buildBarGraphAxes(buildMap(user3.data.intervals)),
             heartRate: buildArray1(user3.data, 'heartRate'),
             respiratoryRate: buildArray1(user3.data, 'respiratoryRate'),
             roomTemperature: buildArray1(user3.data, 'roomTemperature'),

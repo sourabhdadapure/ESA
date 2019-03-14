@@ -1,6 +1,7 @@
 import types from './types'
 
 const user = {
+  sleepStages: { awake: [], light: [], deep: [], out: [] },
   heartRate: [
     { xAxis: [], yAxis: [] },
     { xAxis: [], yAxis: [] },

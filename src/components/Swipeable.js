@@ -39,7 +39,8 @@ export default class Swipeable extends React.Component {
       heartRate,
       respiratoryRate,
       bedTemperature,
-      roomTemperature
+      roomTemperature,
+      sleepStages
     } = selectedUser
     console.log('SELECTED USER', selectedUser)
 
@@ -49,7 +50,12 @@ export default class Swipeable extends React.Component {
     return (
       <Swiper>
         <Wrapper>
-          <BarGraph awakeData={[]} deepData={[]} lightData={[]} outData={[]} />
+          <BarGraph
+            awakeData={sleepStages.awake}
+            deepData={sleepStages.deep}
+            lightData={sleepStages.light}
+            outData={sleepStages.out}
+          />
         </Wrapper>
         <Wrapper>
           <TextWrapper>Room and Bed Temparatures</TextWrapper>
