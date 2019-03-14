@@ -1,6 +1,9 @@
 # Eight Sleep Assignment
 
 <H2> Architectural choices </H2>
+<H3>HighCharts</H3>
+* To display sleep data
+
 <H3>Git Branching methodlogy</H3>
 * Utilized proper git branch flow, develop => feature/functionality => develop
 <H3>Styling</H3>
