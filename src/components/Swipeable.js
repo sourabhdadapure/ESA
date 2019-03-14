@@ -46,7 +46,7 @@ export default class Swipeable extends React.Component {
       roomTemperature,
       sleepStages
     } = selectedUser
-    console.log('GETTINGSLEEPDATA', gettingSleepData)
+
     if (gettingSleepData) {
       return <ActivityIndicator size="large" color="black" />
     }

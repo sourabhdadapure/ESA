@@ -8,7 +8,7 @@ const Wrapper = styled.View``
 export default class SplineGraph extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    xAxis: PropTypes.array.isRequired,
+    // xAxis: PropTypes.array.isRequired,
     y1Title: PropTypes.string.isRequired,
     y1Axis: PropTypes.array.isRequired,
     y2Title: PropTypes.string.isRequired,
