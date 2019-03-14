@@ -10,10 +10,13 @@ import { userSelector } from '../../modules/users'
 )
 export default class SplashContainer extends React.Component {
   render() {
+    const { navigation, userSelector } = this.props
     return (
       <SplashComponent
-        onPress={() => {
-          this.props.navigation.navigate('GraphData')
+        onPress={user => {
+          console.log('SELECTED_USER', user)
+          userSelector(user)
+          navigation.navigate('GraphData')
         }}
       />
     )

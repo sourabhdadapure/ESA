@@ -105,16 +105,15 @@ export function getSleepData() {
             bedTemperature: buildArray1(user2.data, 'bedTemperature')
           },
           user3: {
-            heartRate: buildArray(user3.data, 'heartRate'),
-            respiratoryRate: buildArray(user3.data, 'respiratoryRate'),
-            roomTemperature: buildArray(user3.data, 'roomTemperature'),
-            bedTemperature: buildArray(user3.data, 'bedTemperature')
+            heartRate: buildArray1(user3.data, 'heartRate'),
+            respiratoryRate: buildArray1(user3.data, 'respiratoryRate'),
+            roomTemperature: buildArray1(user3.data, 'roomTemperature'),
+            bedTemperature: buildArray1(user3.data, 'bedTemperature')
           }
         },
         type: types.GET_SLEEP_DATA_SUCCESS
       })
     } catch (error) {
-      console.log('ERRoR', error)
       dispatch({
         type: types.GET_SLEEP_DATA_ERROR,
         error

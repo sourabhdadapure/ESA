@@ -17,13 +17,9 @@ const TextWrapper = styled.Text`
 `
 
 @connect(
-  state => {
-    const { user1 } = state.sleepData
-
-    return {
-      user1
-    }
-  },
+  state => ({
+    selectedUser: state.users.selectedUser
+  }),
   { getSleepData }
 )
 export default class Swipeable extends React.Component {
@@ -37,22 +33,15 @@ export default class Swipeable extends React.Component {
   }
 
   render() {
-    const { gettingSleepData, user1 } = this.props
+    const { gettingSleepData, selectedUser } = this.props
 
     const {
       heartRate,
       respiratoryRate,
       bedTemperature,
       roomTemperature
-    } = user1
-    console.log(
-      'USER1',
-      roomTemperature,
-      heartRate,
-      respiratoryRate,
-      bedTemperature,
-      roomTemperature
-    )
+    } = selectedUser
+    console.log('SELECTED USER', selectedUser)
 
     if (gettingSleepData) {
       return <ActivityIndicator size="large" color="black" />

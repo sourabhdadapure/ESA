@@ -1,10 +1,10 @@
 import types from './types'
 
-export const userSelector = user => {
-  return function(dispatch) {
-    dispatch({
-      type: types.SELECTED_USER,
-      payload: user
-    })
-  }
+export const userSelector = user => (dispatch, getState) => {
+  const { sleepData } = getState()
+  console.log('STATE', getState())
+  dispatch({
+    type: user,
+    payload: sleepData
+  })
 }
